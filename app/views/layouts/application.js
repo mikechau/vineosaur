@@ -1,11 +1,12 @@
 var View = require('views/base/view');
 
 module.exports = View.extend({
-  container: 'div.app-container',
-  id: 'site-container',
+  container: '#vineosaur-container',
+  id: 'application-container',
   regions: {
-    header: '#header-container',
-    main: '#page-container'
+    navigation: 'nav',
+    main: '#content-container',
+    footer: 'footer'
   },
   template: require('../templates/layouts/application')
 });

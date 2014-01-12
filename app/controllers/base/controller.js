@@ -1,5 +1,5 @@
-var SiteView = require('views/layouts/application');
-var HeaderView = require('views/layouts/header');
+var ApplicationView = require('views/layouts/application');
+var NavigationView = require('views/layouts/navigation');
 
 module.exports = Chaplin.Controller.extend({
   // Compositions persist stuff between controllers.
@@ -9,7 +9,7 @@ module.exports = Chaplin.Controller.extend({
   // },
 
   beforeAction: function() {
-    this.compose('site', SiteView);
-    this.compose('header', HeaderView, {region: 'header'});
+    this.compose('application', ApplicationView);
+    this.compose('navigation', NavigationView, {region: 'navigation'});
   },
 });
