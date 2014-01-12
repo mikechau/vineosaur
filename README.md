@@ -7,10 +7,10 @@
 
 ### Setup
 
-    `git clone https://github.com/mikechau/vineosaur.git`
-    `cd vineosaur`
-    `npm install && bower install`
+    git clone https://github.com/mikechau/vineosaur.git
+    cd vineosaur
+    npm install && bower install
 
 ### Getting Started
 
-    `brunch watch --server`
+    brunch watch --server
