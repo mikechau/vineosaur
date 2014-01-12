@@ -8,5 +8,5 @@ module.exports = View.extend({
     main: '#content-container',
     footer: 'footer'
   },
-  template: require('../templates/layouts/application')
+  template: require('views/templates/layouts/application')
 });

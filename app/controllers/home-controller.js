@@ -1,6 +1,6 @@
 var Controller = require('controllers/base/controller');
-var HomePageView = require('views/home/index');
-var HomeAboutPageView = require('views/home/about');
+var HomePageView = require('views/pages/home/index');
+var HomeAboutPageView = require('views/pages/home/about');
 
 module.exports = Controller.extend({
   // beforeAction: function() {

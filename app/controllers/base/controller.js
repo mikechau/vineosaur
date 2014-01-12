@@ -1,6 +1,6 @@
-var ApplicationView = require('views/layouts/application');
-var NavigationView = require('views/layouts/navigation');
-var FooterView = require('views/layouts/footer');
+var ApplicationView = require('views/pages/layouts/application');
+var NavigationView = require('views/pages/layouts/navigation');
+var FooterView = require('views/pages/layouts/footer');
 
 module.exports = Chaplin.Controller.extend({
   // Compositions persist stuff between controllers.
