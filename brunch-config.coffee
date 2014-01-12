@@ -11,9 +11,9 @@ exports.config =
           'bower_components/jquery/jquery.js',
           'bower_components/lodash/dist/lodash.compat.js',
           'bower_components/backbone/backbone.js',
-          'bower_components/chaplin/chaplin.js',
           'bower_components/sass-boostrap3/dist/js/bootstrap.js'
-        ]
+        ],
+        after: ['bower_components/chaplin/chaplin.js']
 
     stylesheets:
       defaultExtension: 'scss'

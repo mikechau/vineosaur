@@ -6,6 +6,11 @@
  * http://paulirish.com/2012/box-sizing-border-box-ftw/
  */
 
-* {
-  box-sizing: border-box;
+.wrapper {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+footer.wrapper {
+  padding-top: 30px;
 }

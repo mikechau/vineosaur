@@ -7,5 +7,7 @@ module.exports = View.extend({
   render: function() {
     View.prototype.render.call(this);
     console.log('test');
+   _.defer( function(){ Holder.run();}, this );
+    // return this;
   }
 });

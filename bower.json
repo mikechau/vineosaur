@@ -7,7 +7,8 @@
     "console-polyfill": "~0.1.0",
     "lodash": "~2.0.0",
     "jquery": "~1.10.2",
-    "sass-boostrap3": "https://github.com/jlong/sass-bootstrap/archive/master.zip"
+    "sass-boostrap3": "https://github.com/jlong/sass-bootstrap/archive/master.zip",
+    "holderjs": "~2.3.0"
   },
   "overrides": {
     "backbone": {

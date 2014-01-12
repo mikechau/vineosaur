@@ -1,5 +1,6 @@
 var ApplicationView = require('views/layouts/application');
 var NavigationView = require('views/layouts/navigation');
+var FooterView = require('views/layouts/footer');
 
 module.exports = Chaplin.Controller.extend({
   // Compositions persist stuff between controllers.
@@ -11,5 +12,6 @@ module.exports = Chaplin.Controller.extend({
   beforeAction: function() {
     this.compose('application', ApplicationView);
     this.compose('navigation', NavigationView, {region: 'navigation'});
+    this.compose('footer', FooterView, {region: 'footer'});
   },
 });
