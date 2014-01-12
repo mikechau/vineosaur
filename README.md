@@ -2,8 +2,8 @@
 
 ## Requirements
 1. NodeJS
-2. brunch - `npm install -g brunch`
-3. bower - `npm install -g bower`
+2. brunch - `npm install -g brunch`, run as `sudo` in linux
+3. bower - `npm install -g bower`, run as `sudo` in linux
 
 ### Setup
 
