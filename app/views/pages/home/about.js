@@ -5,9 +5,12 @@ module.exports = View.extend({
   className: 'home-about-page',
   template: require('views/templates/home/about'),
   render: function() {
+
     View.prototype.render.call(this);
-    console.log('test');
-   _.defer( function(){ Holder.run();}, this );
+
+   _.defer(function(){
+      Holder.run();
+    }, this );
     // return this;
   }
 });

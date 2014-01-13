@@ -2,10 +2,7 @@ var View = require('views/base/view');
 
 module.exports = View.extend({
   template: require('views/templates/videos/item'),
-  initialize: function() {
-    console.log(this.model.get('id'));
-    console.log(this.model.attributes);
-  },
+
   render: function() {
     var that = this;
 
@@ -28,7 +25,6 @@ module.exports = View.extend({
   // responsive video.js
   // http://daverupert.com/2012/05/making-video-js-fluid-for-rwd/
   resizeVideoJS: function(player) {
-    console.log(player);
     var width = document
                .getElementById(player.id())
                .parentElement

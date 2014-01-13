@@ -36,7 +36,6 @@ module.exports = View.extend({
   },
 
   render: function() {
-    var that = this;
     View.prototype.render.call(this);
   },
 
@@ -65,19 +64,19 @@ module.exports = View.extend({
   },
 
   renderSubview: function() {
-    console.log('running');
     var videoSubview = new VideoItemSubview({
       autoRender: true,
       container: this.$('#video-subview-container'),
       model: this.model
     });
+
     this.subview('videoSubview', videoSubview);
   },
 
   videoHotkeyControls: function(e) {
     var which = e.which,
-        video = this.$('video')[0],
-        that = this;
+        video = this.$('video')[0];
+
     switch(which) {
       case 32:
         if (video.paused) {
