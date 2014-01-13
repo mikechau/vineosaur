@@ -86,9 +86,11 @@ module.exports = View.extend({
         }
         break;
       case 37:
+        videojs('video-player').dispose();
         this.previous();
         break;
       case 39:
+        videojs('video-player').dispose();
         this.next();
         break;
       default:

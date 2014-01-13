@@ -9,6 +9,8 @@ module.exports = View.extend({
   render: function() {
     View.prototype.render.call(this);
     this.$('video').hide().fadeIn();
-    _.defer( function(){ videojs('video-player')}, this );
+    _.defer(function(){
+      videojs('video-player');
+    }, this);
   }
 });
