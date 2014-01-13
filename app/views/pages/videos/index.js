@@ -61,6 +61,7 @@ module.exports = View.extend({
   setVideoModel: function() {
     var video = this.collection.at(this.videoMarker);
     this.model.set(video.toJSON());
+    videojs('video-player').dispose();
   },
 
   renderSubview: function() {
@@ -86,11 +87,9 @@ module.exports = View.extend({
         }
         break;
       case 37:
-        videojs('video-player').dispose();
         this.previous();
         break;
       case 39:
-        videojs('video-player').dispose();
         this.next();
         break;
       default:
