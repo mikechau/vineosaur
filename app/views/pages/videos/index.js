@@ -6,7 +6,6 @@ module.exports = View.extend({
   template: require('views/templates/videos/index'),
 
   listen: {
-    // 'change model': 'render',
     'change model': 'renderSubview'
   },
 
@@ -21,6 +20,7 @@ module.exports = View.extend({
 
   initialize: function() {
     var that = this;
+
     this.collection.fetch({
       success: function(model, response) {
         that.setVideoModel();
@@ -28,6 +28,7 @@ module.exports = View.extend({
         that.renderSubview();
       }
     });
+
     $(document).on("keydown", function(e) {
       e.preventDefault();
       that.videoHotkeyControls(e);
@@ -40,7 +41,6 @@ module.exports = View.extend({
   },
 
   previous: function() {
-    console.log('click');
     if (this.videoMarker <= 0) {
       return false;
     }
@@ -50,7 +50,6 @@ module.exports = View.extend({
   },
 
   next: function() {
-    console.log('click');
     if (this.videoMarker > this.numberOfVideos) {
       return false;
     }
@@ -60,7 +59,6 @@ module.exports = View.extend({
   },
 
   setVideoModel: function() {
-    console.log('sets');
     var video = this.collection.at(this.videoMarker);
     this.model.set(video.toJSON());
   },
@@ -76,7 +74,26 @@ module.exports = View.extend({
   },
 
   videoHotkeyControls: function(e) {
-    console.log(e);
+    var which = e.which,
+        video = this.$('video')[0],
+        that = this;
+    switch(which) {
+      case 32:
+        if (video.paused) {
+          video.play();
+        } else {
+          video.pause();
+        }
+        break;
+      case 37:
+        this.previous();
+        break;
+      case 39:
+        this.next();
+        break;
+      default:
+        return false;
+    }
   }
 
 });
