@@ -1,10 +1,10 @@
-// var Controller = require('controllers/base/controller');
-// var Videos = require('collections/videos');
-// var Video = require('models/video');
-// var VideosView = require('views/videos/all');
-// var VideoView = require('views/videos/single');
+var Controller = require('controllers/base/controller');
+var VideosCollection = require('models/videos/collection');
+var VideoModel = require('models/videos/model');
+// var VideosCollectionView = require('views/pages/videos/collection');
+var VideoView = require('views/pages/videos/index');
 
-// module.exports = Controller.extend({
+module.exports = Controller.extend({
 
 //   // beforeAction: function() {
 //   //   this.compose('videos', Videos, { region: 'main' });
@@ -17,21 +17,32 @@
 //   //   }
 //   // },
 
-//   index: function() {
-//     // var collection = this.compose('videos', Videos);
-//     // console.log(collection);
-//     // if(!this.disposed) {
-//       var collection = new Videos();
-//       var video = new Video();
-//       collection.fetch({
-//         success: function() {
-//       this.view = new VideoView({ collection: collection, region: 'main' });
+  index: function() {
+    // var collection = this.compose('videos', Videos);
+    // console.log(collection);
+    // if(!this.disposed) {
+      // var collection = new Videos();
+      // var video = new Video();
+      // collection.fetch({
+      //   success: function() {
+      // this.view = new VideoView({ collection: collection, region: 'main' });
 
-//           console.log('works');
-//         }
-//       });
-//     // }
-//   },
+      //     console.log('works');
+      //   }
+      // });
+    // }
+    var collection = new VideosCollection(),
+        model = new VideoModel();
+    
+    this.view = new VideoView({ 
+      collection: collection,
+      model: model,
+      region: 'main'
+    });
+    // collection.fetch({success: function() {
+    //   console.log('test');
+    // }});
+  },
 
 //   show: function(params) {
 //     var collection = this.compose('videos', Videos);
@@ -41,4 +52,4 @@
 //     }
 //   }
 
-// });
+});
