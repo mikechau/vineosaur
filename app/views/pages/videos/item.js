@@ -10,15 +10,24 @@ module.exports = View.extend({
 
     this.$('video').hide().fadeIn();
 
+    // We use defer to load in videojs after the page has been rendered
+    // http://stackoverflow.com/questions/9145680/calling-javascript-on-rendering-views-in-backbone-js-post-render-callback
     _.defer(function(){
       videojs('video-player').ready(function(){
-        // Store the video object
-        var myPlayer = this;
 
-        // Call the function on resize
-        window.onresize = that.resizeVideoJS(myPlayer);
+        // Store the video object
+        var player = this;
+
+        // Initialize the function
+        that.resizeVideoJS(player);
+
+        // when the video is resized, call the function again
+        window.onresize = function() {
+          that.resizeVideoJS(player);
+        };
+
       });
-    }, this);
+    });
 
   },
 
@@ -31,6 +40,7 @@ module.exports = View.extend({
                .offsetWidth,
         aspectRatio = 9/16;
 
-    return player.width(width).height(width * aspectRatio);
+    player.width(width).height(width * aspectRatio);
   }
+
 });

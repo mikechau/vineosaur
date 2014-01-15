@@ -1,12 +1,15 @@
 {
-  "author": "Mike Chau & Brian DeVries",
+  "author": "Mike Chau",
   "name": "vineosaur",
+  "contributors": [
+    { "name": "Brian DeVries" }
+  ],
   "description": "Grabs vine videos from The Best of Vine",
   "version": "0.0.1",
   "homepage": "",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/mikechau/vineosaur"
   },
   "scripts": {
     "start": "brunch watch --server",

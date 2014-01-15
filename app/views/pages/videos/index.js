@@ -25,7 +25,6 @@ module.exports = View.extend({
       success: function(model, response) {
         that.setVideoModel();
         that.numberOfVideos = that.collection.length;
-        that.renderSubview();
       }
     });
 
@@ -37,6 +36,7 @@ module.exports = View.extend({
 
   render: function() {
     View.prototype.render.call(this);
+    console.log('test');
   },
 
   previous: function() {
@@ -45,6 +45,7 @@ module.exports = View.extend({
     }
 
     this.videoMarker -= 1;
+    videojs('video-player').dispose();
     this.setVideoModel();
   },
 
@@ -54,13 +55,13 @@ module.exports = View.extend({
     }
 
     this.videoMarker += 1;
+    videojs('video-player').dispose();
     this.setVideoModel();
   },
 
   setVideoModel: function() {
     var video = this.collection.at(this.videoMarker);
     this.model.set(video.toJSON());
-    videojs('video-player').dispose();
   },
 
   renderSubview: function() {
