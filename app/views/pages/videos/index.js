@@ -1,12 +1,11 @@
 var View = require('views/base/view');
-var VideoItemSubview = require('views/pages/videos/item');
 
 module.exports = View.extend({
   autoRender: true,
   template: require('views/templates/videos/index'),
 
   listen: {
-    'change model': 'renderSubview'
+    'change model': 'updateVideoSource'
   },
 
   events: {
@@ -23,8 +22,8 @@ module.exports = View.extend({
 
     this.collection.fetch({
       success: function(model, response) {
-        that.setVideoModel();
         that.numberOfVideos = that.collection.length;
+        that.setVideoModel();
       }
     });
 
@@ -35,8 +34,28 @@ module.exports = View.extend({
   },
 
   render: function() {
+    var that = this;
+
     View.prototype.render.call(this);
-    console.log('test');
+
+    this.$('video').hide().fadeIn();
+
+    _.defer(function(){
+      videojs('video-player').ready(function(){
+
+        // Store the video object
+        var player = this;
+
+        // Initialize the function
+        that.resizeVideoJS(player);
+
+        // when the video is resized, call the function again
+        window.onresize = function() {
+          that.resizeVideoJS(player);
+        };
+      });
+    });
+
   },
 
   previous: function() {
@@ -45,7 +64,6 @@ module.exports = View.extend({
     }
 
     this.videoMarker -= 1;
-    videojs('video-player').dispose();
     this.setVideoModel();
   },
 
@@ -55,7 +73,6 @@ module.exports = View.extend({
     }
 
     this.videoMarker += 1;
-    videojs('video-player').dispose();
     this.setVideoModel();
   },
 
@@ -64,14 +81,8 @@ module.exports = View.extend({
     this.model.set(video.toJSON());
   },
 
-  renderSubview: function() {
-    var videoSubview = new VideoItemSubview({
-      autoRender: true,
-      container: this.$('#video-subview-container'),
-      model: this.model
-    });
-
-    this.subview('videoSubview', videoSubview);
+  updateVideoSource: function() {
+    this.$('video')[0].src = this.model.get('source');
   },
 
   videoHotkeyControls: function(e) {
@@ -95,6 +106,18 @@ module.exports = View.extend({
       default:
         return false;
     }
+  },
+
+  // responsive video.js
+  // http://daverupert.com/2012/05/making-video-js-fluid-for-rwd/
+  resizeVideoJS: function(player) {
+    var width = document
+               .getElementById(player.id())
+               .parentElement
+               .offsetWidth,
+        aspectRatio = 9/16;
+
+    player.width(width).height(width * aspectRatio);
   }
 
 });

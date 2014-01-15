@@ -7,7 +7,32 @@
     </div>
     <div class="col-md-10">
       <div class="video-container">
-        <div id="video-subview-container"></div>
+
+        <video id="video-player" class="video-js vjs-default-skin vjs-big-play-centered center"
+          controls preload="auto" autoplay data-setup="{}">
+           <source src="{{source}}" type='video/mp4' />
+        </video>
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <h1>
+                <span class="text-success">
+                  Vineosaur used vine whip!
+                </span>
+              </h1>
+              <hr />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+            <h4>posted by <a href="https://www.facebook.com/BestOfVines">Best Vines</a></h4>
+            <h5>{{name}}<small>{{ts}}</small></h5>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
     <div class="col-md-1">
