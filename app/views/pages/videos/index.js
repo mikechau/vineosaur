@@ -1,4 +1,5 @@
-var View = require('views/base/view');
+var View = require('views/base/view'),
+    VideoMetadataSubView = require('views/pages/videos/info');
 
 module.exports = View.extend({
   autoRender: true,
@@ -22,7 +23,8 @@ module.exports = View.extend({
 
     this.collection.fetch({
       success: function(model, response) {
-        that.numberOfVideos = that.collection.length;
+        // we subtract from 1 because arrays start from 0
+        that.numberOfVideos = that.collection.length - 1;
         that.setVideoModel();
       }
     });
@@ -58,21 +60,33 @@ module.exports = View.extend({
 
   },
 
+  renderVideoMetadataSubview: function() {
+   var videoSubview = new VideoMetadataSubView({
+      autoRender: true,
+      container: this.$('#video-subview-container'),
+      model: this.model
+    });
+
+    this.subview('videoSubview', videoSubview);
+  },
+
   previous: function() {
     if (this.videoMarker <= 0) {
-      return false;
+      this.videoMarker = this.numberOfVideos;
+    } else {
+      this.videoMarker -= 1;
     }
 
-    this.videoMarker -= 1;
     this.setVideoModel();
   },
 
   next: function() {
-    if (this.videoMarker > this.numberOfVideos) {
-      return false;
+    if (this.videoMarker >= this.numberOfVideos) {
+      this.videoMarker = 0;
+    } else {
+      this.videoMarker += 1;
     }
 
-    this.videoMarker += 1;
     this.setVideoModel();
   },
 
@@ -83,6 +97,8 @@ module.exports = View.extend({
 
   updateVideoSource: function() {
     this.$('video')[0].src = this.model.get('source');
+    // this.$('.video-subview-container').html();
+    this.renderVideoMetadataSubview();
   },
 
   videoHotkeyControls: function(e) {
