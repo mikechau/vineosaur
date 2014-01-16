@@ -97,7 +97,6 @@ module.exports = View.extend({
 
   updateVideoSource: function() {
     this.$('video')[0].src = this.model.get('source');
-    // this.$('.video-subview-container').html();
     this.renderVideoMetadataSubview();
   },
 
