@@ -6,22 +6,15 @@
  * http://paulirish.com/2012/box-sizing-border-box-ftw/
  */
 
-@import "compass";
-div {
-  @include border-radius(4px);
-}
+// Compass CSS
+@import "compass/css3";
 
-.wrapper {
-  padding-left: 15px;
-  padding-right: 15px;
-}
+// Core variables and mixins.
+@import "base/variables"; // Modify this for custom colors, font-sizes, etc
+@import "base/mixins";
 
-footer.wrapper {
-  padding-top: 30px;
-}
+// Global Styles & Bootstrap Overrides
+@import "base/global";
 
-.center {
-   float: none;
-   margin-left: auto;
-   margin-right: auto;
-}
+// Components: Sections / Pages.
+@import "components/footer";
