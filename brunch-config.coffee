@@ -32,3 +32,4 @@ exports.config =
   plugins:
     sass:
       debug: 'comments'
+      options: ['--compass']

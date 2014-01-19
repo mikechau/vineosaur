@@ -6,6 +6,11 @@
  * http://paulirish.com/2012/box-sizing-border-box-ftw/
  */
 
+@import "compass";
+div {
+  @include border-radius(4px);
+}
+
 .wrapper {
   padding-left: 15px;
   padding-right: 15px;
