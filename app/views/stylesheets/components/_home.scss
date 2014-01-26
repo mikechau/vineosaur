@@ -1,0 +1,24 @@
+/* ==========================================================================
+   Home Page
+   ========================================================================== */
+
+.video-js {
+  background: none;
+}
+
+.content-container {
+  background-image: url(../images/pokemon-bg.gif);
+  background-size: cover;
+}
+
+.vjs-default-skin .vjs-loading-spinner {
+  opacity: 1;
+  -webkit-animation: none;
+     -moz-animation: none;
+          animation: none;
+
+  &:before {
+    content: '';
+    background: url(../images/loader.gif) no-repeat;
+  }
+}
