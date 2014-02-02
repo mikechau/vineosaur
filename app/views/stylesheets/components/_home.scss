@@ -2,11 +2,15 @@
    Home Page
    ========================================================================== */
 
+.video-container {
+  position: relative;
+}
+
 .video-js {
   background: none;
 }
 
-.content-container {
+.content-video-bg {
   background-image: url(../images/pokemon-bg.gif);
   background-size: cover;
 }
@@ -20,5 +24,18 @@
   &:before {
     content: '';
     background: url(../images/loader.gif) no-repeat;
+  }
+}
+
+.button {
+  position: absolute;
+  top: 40%;
+
+  &.btn-left {
+    left: 0;
+  }
+
+  &.btn-right {
+    right: 0;
   }
 }
