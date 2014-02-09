@@ -2,41 +2,54 @@
    Home Page
    ========================================================================== */
 
-.video-container {
-  position: relative;
-}
-
 .video-js {
   background: none;
 }
 
 .content-video-bg {
-  background-image: url(../images/pokemon-bg.gif);
-  background-size: cover;
-}
+  @include background-image(radial-gradient(closest-corner,rgba(16,47,70,0) 60%,rgba(16,47,70,0.26)), -webkit-linear-gradient(108deg,#45bf55,#044d29 90%));
+  @include background-image(radial-gradient(closest-corner,rgba(16,47,70,0) 60%,rgba(16,47,70,0.26)), -moz-linear-gradient(108deg,#45bf55,#044d29 90%));
 
-.vjs-default-skin .vjs-loading-spinner {
-  opacity: 1;
-  -webkit-animation: none;
-     -moz-animation: none;
-          animation: none;
-
-  &:before {
-    content: '';
-    background: url(../images/loader.gif) no-repeat;
+  .container {
+    position: relative;
   }
 }
 
+.content-home-body {
+  padding: 50px 0;
+  text-align: center;
+}
+
 .button {
+  @include transition-property(all);
+  @include transition-duration(0.2s);
+  @include transition-timing-function(ease-in);
+  @include opacity(0.2);
   position: absolute;
   top: 40%;
+  height: 100px;
+  width: 50px;
+  z-index: 10;
+
+  &.btn-left,
+  &.btn-right {
+    button {
+      background: url(../images/arrow-icon.png) no-repeat;
+      width: 50px;
+      height: 79px;
+      @extend .hide-text;
+    }
+  }
 
   &.btn-left {
-    left: 0;
-    z-index: 10;
+    @include transform(scaleX(-1));
   }
 
   &.btn-right {
     right: 0;
+  }
+
+  &:hover {
+    @include opacity(1);
   }
 }

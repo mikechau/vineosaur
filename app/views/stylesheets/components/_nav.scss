@@ -2,14 +2,12 @@
    Navbar
    ========================================================================== */
 
-.navbar-brand {
-  padding-left: 50px;
-  background-image: url(../images/bulbasaur-logo.gif);
-  background-position: left;  
-  background-size: 40px auto;
-  background-repeat: no-repeat;
-}
-
 .navbar {
   margin-bottom: 0;
+
+  a {
+    @include transition-property(all);
+    @include transition-duration(0.2s);
+    @include transition-timing-function(ease-in);
+  }
 }
