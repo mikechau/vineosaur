@@ -6,3 +6,9 @@
   padding-left: 15px;
   padding-right: 15px;
 }
+
+.hide-text {
+  text-indent: 200%;
+  white-space: nowrap;
+  overflow: hidden;
+}
