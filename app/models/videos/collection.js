@@ -5,6 +5,8 @@ module.exports = Collection.extend({
 
   model: VideoModel,
 
-  url: 'http://vinetime.herokuapp.com/api/v1/videos'
+  initialize: function(options) {
+    this.url = 'http://jetclips-api.herokuapp.com/api/v1/videos/' + options.id;
+  }
 
 });

@@ -1,7 +1,11 @@
 // Application routes.
 module.exports = function(match) {
-  match('', 'videos#index');
+  match('', 'home#channels');
+  match('channels', 'home#channels');
   match('home', 'home#index');
   match('about', 'home#about');
-  match('channels', 'home#channels');
+
+  match('channel/vine', 'videos#vine');
+  match('channel/youtube', 'videos#youtube');
+  match('channel/instagram', 'videos#instagram');
 };
