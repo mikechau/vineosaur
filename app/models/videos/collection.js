@@ -5,6 +5,6 @@ module.exports = Collection.extend({
 
   model: VideoModel,
 
-  url: 'http://localhost:3000/api/v1/videos'
+  url: 'http://vinetime.herokuapp.com/api/v1/videos'
 
 });

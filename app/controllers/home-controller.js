@@ -1,12 +1,9 @@
 var Controller = require('controllers/base/controller');
 var HomePageView = require('views/pages/home/index');
 var HomeAboutPageView = require('views/pages/home/about');
+var HomeChannelsPageView = require('views/pages/home/channels');
 
 module.exports = Controller.extend({
-  // beforeAction: function() {
-  //   this.constructor.__super__.beforeAction.apply(this, arguments);
-  //   this.compose('header', HeaderView, {region: 'header'});
-  // },
 
   index: function() {
     this.view = new HomePageView({region: 'main'});
@@ -14,5 +11,9 @@ module.exports = Controller.extend({
 
   about: function() {
     this.view = new HomeAboutPageView({region: 'main'});
+  },
+
+  channels: function() {
+    this.view = new HomeChannelsPageView({region: 'main'});
   }
 });
