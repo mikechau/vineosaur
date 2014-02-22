@@ -10,6 +10,22 @@
   font-family: 'Satisfy', cursive;
 }
 
+a:hover.channel-link {
+  text-decoration: none;
+}
+
+a:hover.channel-link > .instagram{
+  background-color: #bdc3c7;
+}
+
+a:hover.channel-link > .vine{
+  background-color: #16a085;
+}
+
+a:hover.channel-link > .youtube{
+  background-color: #f39c12;
+}
+
 .channel{
   padding-top: 80px;
 }
