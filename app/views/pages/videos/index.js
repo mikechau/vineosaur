@@ -23,7 +23,6 @@ module.exports = View.extend({
   numberOfVideos: 0,
 
   initialize: function() {
-    console.log(this);
     var that = this;
 
     this.collection.fetch({
