@@ -11,7 +11,9 @@ module.exports = View.extend({
 
   events: {
     'click button[name="btn-previous"]': 'previous',
-    'click button[name="btn-next"]': 'next'
+    'click button[name="btn-next"]': 'next',
+    'click button.endless-disabled': 'enableEndlessMode',
+    'click button.endless-enabled': 'disableEndlessMode'
   },
 
   container: '.video-container',
@@ -43,7 +45,7 @@ module.exports = View.extend({
     this.$('video').hide().fadeIn();
 
     _.defer(function(){
-      videojs('video-player').ready(function(){
+      videojs('video-player').ready(function() {
 
         // Store the video object
         var player = this;
@@ -123,6 +125,24 @@ module.exports = View.extend({
     }
   },
 
+  enableEndlessMode: function(e) {
+    this.toggleEndlessModeButton(e.target);
+    this.$(e.target).text('Turn Off Endless Mode');
+
+    var that = this,
+        vjs = videojs('video-player');
+
+    this.videoEndlessModeEvent(vjs);
+    this.playNext(vjs);
+  },
+
+  disableEndlessMode: function(e) {
+    this.toggleEndlessModeButton(e.target);
+    this.$(e.target).text('Turn On Endless Mode');
+
+    videojs('video-player').off('ended');
+  },
+
   // responsive video.js
   // http://daverupert.com/2012/05/making-video-js-fluid-for-rwd/
   resizeVideoJS: function(player) {
@@ -133,6 +153,24 @@ module.exports = View.extend({
         aspectRatio = 9/16;
 
     player.width(width).height(width * aspectRatio);
+  },
+
+  toggleEndlessModeButton: function(target) {
+    this.$(target).toggleClass('endless-disabled endless-enabled');
+  },
+
+  playNext: function(vjs) {
+    var that = this;
+    if (vjs.currentTime() === vjs.duration()) {
+      that.next();
+    }
+  },
+
+  videoEndlessModeEvent: function(vjs) {
+    var that = this;
+    vjs.on('ended', function() {
+      that.next();
+    });
   }
 
 });

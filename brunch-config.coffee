@@ -9,6 +9,7 @@ exports.config =
         before: [
           'bower_components/console-polyfill/index.js',
           'bower_components/jquery/jquery.js',
+          'vendor/jquery-dim-background.min.js',
           'bower_components/lodash/dist/lodash.compat.js',
           'bower_components/backbone/backbone.js',
           'bower_components/sass-boostrap3/dist/js/bootstrap.js'
