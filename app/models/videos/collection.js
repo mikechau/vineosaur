@@ -6,7 +6,7 @@ module.exports = Collection.extend({
   model: VideoModel,
 
   initialize: function(options) {
-    this.url = 'http://jetclips-api.herokuapp.com/api/v1/videos/' + options.id;
+    this.url = 'http://jetclips.herokuapp.com/api/v1/videos/' + options.id;
   }
 
 });
