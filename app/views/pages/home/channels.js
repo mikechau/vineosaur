@@ -5,5 +5,10 @@ module.exports = View.extend({
 
   className: 'channels-page',
 
-  template: require('views/templates/home/channels')
+  template: require('views/templates/home/channels'),
+
+  initialize: function() {
+    this.clearVideoJS();
+    this.clearKeydownEvents();
+  }
 });

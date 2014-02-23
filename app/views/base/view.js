@@ -5,5 +5,17 @@ module.exports = Chaplin.View.extend({
 
   getTemplateFunction: function(){
     return this.template;
+  },
+
+  clearVideoJS: function() {
+    try {
+      videojs("video-player").dispose();
+    } catch(err) {
+      //do nothing
+    }
+  },
+
+  clearKeydownEvents: function() {
+    $(document).unbind('keydown');
   }
 });
