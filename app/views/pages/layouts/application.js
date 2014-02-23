@@ -1,7 +1,7 @@
 var View = require('views/base/view');
 
 module.exports = View.extend({
-  container: '#vineosaur-container',
+  container: '#jetclips-container',
   id: 'application-container',
   regions: {
     navigation: 'nav',

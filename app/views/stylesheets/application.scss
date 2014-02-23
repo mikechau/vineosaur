@@ -16,6 +16,9 @@
 // Global Styles & Bootstrap Overrides
 @import "base/global";
 
+// Font Awesome
+@import "../../../bower_components/components-font-awesome/css/font-awesome.css";
+
 // Components: Sections / Pages.
 @import "components/home";
 @import "components/nav";

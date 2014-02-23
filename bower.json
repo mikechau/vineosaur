@@ -8,7 +8,8 @@
     "lodash": "~2.0.0",
     "jquery": "~1.10.2",
     "sass-boostrap3": "https://github.com/jlong/sass-bootstrap/archive/master.zip",
-    "holderjs": "~2.3.0"
+    "holderjs": "~2.3.0",
+    "font-awesome": "~4.0.3"
   },
   "overrides": {
     "backbone": {
@@ -17,6 +18,9 @@
         "jquery": "*"
       },
       "main": "backbone.js"
+    },
+    "font-awesome": {
+      "main": ["./css/font-awesome.css", "./fonts/*"]
     }
   }
 }

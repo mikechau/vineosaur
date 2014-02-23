@@ -13,7 +13,9 @@ module.exports = View.extend({
     'click button[name="btn-previous"]': 'previous',
     'click button[name="btn-next"]': 'next',
     'click button.endless-disabled': 'enableEndlessMode',
-    'click button.endless-enabled': 'disableEndlessMode'
+    'click button.endless-enabled': 'disableEndlessMode',
+    'click button.dim-enabled': 'disableDimMode',
+    'click button.dim-disabled': 'enableDimMode'
   },
 
   container: '.video-container',
@@ -21,6 +23,7 @@ module.exports = View.extend({
   numberOfVideos: 0,
 
   initialize: function() {
+    console.log(this);
     var that = this;
 
     this.collection.fetch({
@@ -126,8 +129,7 @@ module.exports = View.extend({
   },
 
   enableEndlessMode: function(e) {
-    this.toggleEndlessModeButton(e.target);
-    this.$(e.target).text('Turn Off Endless Mode');
+    this.toggleEndlessModeButton();
 
     var that = this,
         vjs = videojs('video-player');
@@ -137,8 +139,7 @@ module.exports = View.extend({
   },
 
   disableEndlessMode: function(e) {
-    this.toggleEndlessModeButton(e.target);
-    this.$(e.target).text('Turn On Endless Mode');
+    this.toggleEndlessModeButton();
 
     videojs('video-player').off('ended');
   },
@@ -156,7 +157,7 @@ module.exports = View.extend({
   },
 
   toggleEndlessModeButton: function(target) {
-    this.$(target).toggleClass('endless-disabled endless-enabled');
+    this.$('button[name="endless-mode"]').toggleClass('endless-disabled endless-enabled').find('i').toggleClass('mode-enabled');
   },
 
   playNext: function(vjs) {
@@ -171,6 +172,22 @@ module.exports = View.extend({
     vjs.on('ended', function() {
       that.next();
     });
+  },
+
+  enableDimMode: function(e) {
+    this.toggleDimModeButton();
+
+    $('#video-player, .button, button').dimBackground();
+  },
+
+  disableDimMode: function(e) {
+    this.toggleDimModeButton();
+
+    $.undim();
+  },
+
+  toggleDimModeButton: function(target) {
+    this.$('button[name="dim-mode"]').toggleClass('dim-disabled dim-enabled').find('i').toggleClass('mode-enabled');
   }
 
 });

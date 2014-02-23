@@ -24,3 +24,25 @@ register('url', function(routeName) {
   var options = params.pop();
   return utils.reverse(routeName, params);
 });
+
+register('displayPostedBy', function() {
+  var poster = '',
+      pathname = window.location.pathname;
+
+  switch(pathname) {
+    case '/channel/vine':
+      poster = '<a href="https://www.facebook.com/BestOfVines">Best Vines</a>';
+      break;
+    case '/channel/instagram':
+      poster = '<a href="https://www.facebook.com/thebestIGvideos">Best Instagram Videos</a>';
+      break;
+    case '/channel/youtube':
+      poster = '<a href="https://www.facebook.com/TheBestYouTubeVideosEver">The best of Youtube</a>';
+      break;
+    default:
+      poster = 'Unknown';
+      break;
+  }
+
+  return new Handlebars.SafeString(poster);
+});
